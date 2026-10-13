@@ -9,11 +9,13 @@
   --r:20px; --border:1px solid rgba(212,175,55,.25);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html,body{overflow-x:hidden;overscroll-behavior:none}
+html,body{overscroll-behavior-x:none}
 html{-webkit-text-size-adjust:100%}
 body{
   font-family:var(--font-body);color:var(--cream);background:var(--bg);
   min-height:100vh;display:flex;justify-content:center;-webkit-tap-highlight-color:transparent;
+  overflow-x:hidden;
+  overflow-x:clip;
   touch-action:pan-y;
 }
 .bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;
