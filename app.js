@@ -15,13 +15,12 @@
   });
   const yr = $("#year"); if (yr) yr.textContent = new Date().getFullYear();
 
-  // 2) reveal on scroll
+  // 2) reveal on scroll (fade in AND out with direction)
   const io = new IntersectionObserver(
-    (es) => es.forEach((e) => e.isIntersecting && e.target.classList.add("in")),
+    (es) => es.forEach((e) => e.target.classList.toggle("in", e.isIntersecting)),
     { threshold: 0.12 }
   );
   $$(".reveal").forEach((el) => io.observe(el));
-  setTimeout(() => $$(".reveal").forEach((el) => el.classList.add("in")), 600); // fallback
 
   // 3) toast
   const toast = $("#toast");
@@ -81,4 +80,18 @@
     URL.revokeObjectURL(a.href);
     showToast("جهة الاتصال نزلت ✅");
   });
+  // 7) rotating chic tagline
+  const phrases = ["قهوتك على مزاجك", "ادفع في ثانية", "رأيك يصنع الفرق"];
+  const tag = $("#tagline");
+  if (tag) {
+    let ti = 0;
+    setInterval(() => {
+      tag.classList.add("swap");
+      setTimeout(() => {
+        ti = (ti + 1) % phrases.length;
+        tag.textContent = phrases[ti];
+        tag.classList.remove("swap");
+      }, 450);
+    }, 3200);
+  }
 })();
