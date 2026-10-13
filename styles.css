@@ -9,21 +9,24 @@
   --r:20px; --border:1px solid rgba(212,175,55,.25);
 }
 *{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:hidden;overscroll-behavior:none}
+html{-webkit-text-size-adjust:100%}
 body{
   font-family:var(--font-body);color:var(--cream);background:var(--bg);
   min-height:100vh;display:flex;justify-content:center;-webkit-tap-highlight-color:transparent;
+  touch-action:pan-y;
 }
 .bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;
   background:radial-gradient(700px 340px at 50% -80px,rgba(212,175,55,.30),transparent 70%),
              radial-gradient(560px 420px at 88% 42%,rgba(212,175,55,.10),transparent 70%),
              radial-gradient(620px 500px at 8% 92%,rgba(212,175,55,.12),transparent 70%)}
-.bg-pattern{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.7;
+.bg-pattern{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.9;
   background:url("./assets/waves.svg") center top / 170% auto no-repeat;
-  filter:blur(1px) saturate(1.15);
+  filter:blur(1px) saturate(1.25);
   -webkit-mask-image:radial-gradient(ellipse 125% 78% at 50% 0%,#000 8%,transparent 86%);
   mask-image:radial-gradient(ellipse 125% 78% at 50% 0%,#000 8%,transparent 86%);
-  animation:waveDrift 22s ease-in-out infinite alternate}
-@keyframes waveDrift{from{background-position:46% 0}to{background-position:56% 0}}
+  animation:waveDrift 18s ease-in-out infinite alternate}
+@keyframes waveDrift{from{background-position:42% 0}to{background-position:60% 0}}
 .phone{width:100%;max-width:430px;padding:28px 18px 60px;position:relative;z-index:1}
 
 /* reveal animation */
@@ -104,3 +107,14 @@ body{
   background:var(--gold);color:#1a1408;font-weight:800;font-size:14px;padding:12px 22px;border-radius:999px;
   transition:all .3s;pointer-events:none;box-shadow:0 10px 30px rgba(0,0,0,.4)}
 .toast.show{opacity:1;transform:translateX(50%) translateY(0)}
+
+/* small screens: keep everything consistent */
+@media (max-width:360px){
+  .phone{padding:22px 14px 48px}
+  .soc{font-size:10.5px;min-height:106px}
+  .nowrap{font-size:10px}
+  .stars-row{font-size:11px}
+  .tagline-live{font-size:14px}
+  .pay-info strong{font-size:14px}
+  .btn-open{min-width:80px;padding:11px 16px}
+}

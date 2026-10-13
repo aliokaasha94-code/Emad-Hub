@@ -94,4 +94,7 @@
       }, 450);
     }, 3200);
   }
+  // 8) lock gestures: no pinch-zoom (iOS Safari), vertical scroll only
+  document.addEventListener("gesturestart", (e) => e.preventDefault());
+  document.addEventListener("dblclick", (e) => e.preventDefault(), { passive: false });
 })();
